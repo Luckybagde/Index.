@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf6f1">
+  <meta name="description" content="A little love, a lot of joy. Lucky and Vishu invite you to celebrate their wedding.">
+  <title>Lucky &amp; Vishu — A Celebration of Love</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#invitation">Skip to invitation</a>
+  <div class="page-shell">
+    <header class="topbar" aria-label="Invitation controls">
+      <a class="wordmark" href="#home" aria-label="Lucky and Vishu, home">L <span>&amp;</span> V</a>
+      <nav class="top-actions" aria-label="Invitation actions">
+        <button class="icon-button music-toggle" id="music-toggle" type="button" aria-pressed="false" aria-label="Play gentle background music">
+          <span class="music-icon" aria-hidden="true">♫</span><span class="music-label">Music off</span>
+        </button>
+        <button class="icon-button share-button" id="share-button" type="button" aria-label="Share this invitation">
+          <span aria-hidden="true">↗</span><span class="share-label">Share</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-wash" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow fade-in">TOGETHER WITH OUR FAMILIES</p>
+          <span class="tiny-flower" aria-hidden="true">✿</span>
+          <h1 id="hero-title" class="fade-in">Lucky <span class="ampersand">&amp;</span><br>Vishu</h1>
+          <p class="hero-script fade-in">invite you to celebrate a love in bloom</p>
+          <a class="scroll-cue" href="#invitation"><span>OUR INVITATION</span><span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-side-note" aria-hidden="true">A LOVE STORY, STILL UNFOLDING</div>
+        <svg class="hero-botanical botanical-left" viewBox="0 0 240 410" fill="none" aria-hidden="true"><path d="M12 405C113 310 41 218 175 109 203 86 215 54 226 8" stroke="currentColor" stroke-width="1.2"/><path d="M109 276C58 258 44 224 54 197c34 4 57 33 55 74Zm43-91c-5-40 13-65 42-74 10 32-6 59-42 74ZM80 344c-41-4-62-26-63-57 34-1 57 19 63 57Zm98-208c-1-35 16-57 42-65 7 28-8 52-42 65Z" fill="currentColor" fill-opacity=".16" stroke="currentColor" stroke-width="1"/></svg>
+        <svg class="hero-botanical botanical-right" viewBox="0 0 240 410" fill="none" aria-hidden="true"><path d="M12 405C113 310 41 218 175 109 203 86 215 54 226 8" stroke="currentColor" stroke-width="1.2"/><path d="M109 276C58 258 44 224 54 197c34 4 57 33 55 74Zm43-91c-5-40 13-65 42-74 10 32-6 59-42 74ZM80 344c-41-4-62-26-63-57 34-1 57 19 63 57Zm98-208c-1-35 16-57 42-65 7 28-8 52-42 65Z" fill="currentColor" fill-opacity=".16" stroke="currentColor" stroke-width="1"/></svg>
+        <span class="hero-sparkle sparkle-one" aria-hidden="true">✧</span><span class="hero-sparkle sparkle-two" aria-hidden="true">✧</span>
+      </section>
+
+      <section class="invitation section-pad" id="invitation" aria-labelledby="invitation-title">
+        <div class="section-heading">
+          <p class="eyebrow">A NOTE FROM THE HEART</p>
+          <span class="divider-flower" aria-hidden="true">❧</span>
+          <h2 id="invitation-title">A little note,<br><em>just for you</em></h2>
+          <p class="invitation-copy">Some stories are written in the stars. Ours is even sweeter with the people we love beside us. Please join us as we begin our forever.</p>
+          <p class="signature">With love, <span>Lucky &amp; Vishu</span></p>
+        </div>
+        <div class="countdown-card" aria-label="Wedding countdown">
+          <p class="eyebrow">THE COUNTDOWN TO OUR FOREVER</p>
+          <div class="countdown" id="countdown" aria-live="polite">
+            <div class="count-unit"><strong id="days">—</strong><span>DAYS</span></div><i aria-hidden="true">:</i>
+            <div class="count-unit"><strong id="hours">—</strong><span>HOURS</span></div><i aria-hidden="true">:</i>
+            <div class="count-unit"><strong id="minutes">—</strong><span>MINUTES</span></div><i aria-hidden="true">:</i>
+            <div class="count-unit"><strong id="seconds">—</strong><span>SECONDS</span></div>
+          </div>
+          <p class="countdown-note" id="countdown-note">Our date is being dreamed up. Check back soon ♡</p>
+          <div class="countdown-rule" aria-hidden="true"><span>✦</span></div>
+        </div>
+      </section>
+
+      <section class="details section-pad" id="details" aria-labelledby="details-title">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">SAVE A LITTLE ROOM IN YOUR HEART</p>
+          <h2 id="details-title">The day we say <em>“I do”</em></h2>
+          <p class="section-intro">The details are taking shape. We can't wait to celebrate with you.</p>
+        </div>
+        <div class="details-grid">
+          <article class="detail-card"><span class="detail-icon" aria-hidden="true">✧</span><p class="eyebrow">WHEN</p><h3 id="wedding-date">The date</h3><p id="wedding-time">A date filled with love<br>will be shared soon</p></article>
+          <article class="detail-card"><span class="detail-icon" aria-hidden="true">❀</span><p class="eyebrow">WHERE</p><h3 id="venue-name">The venue</h3><p id="venue-address">A beautiful place<br>to be announced</p><a class="text-link" id="maps-link" href="#details" aria-disabled="true">Map coming soon <span aria-hidden="true">→</span></a></article>
+          <article class="detail-card"><span class="detail-icon" aria-hidden="true">♡</span><p class="eyebrow">WHAT TO EXPECT</p><h3>A day of joy</h3><p>Happy tears, full hearts<br>&amp; a dance floor waiting</p></article>
+        </div>
+        <div class="schedule-wrap">
+          <div class="schedule-title"><span class="eyebrow">THE CELEBRATION</span><h3>A day to remember</h3></div>
+          <div class="schedule-line" aria-label="Event schedule details to be announced">
+            <div class="schedule-item"><span class="schedule-dot" aria-hidden="true"></span><span class="schedule-time">SOON</span><span class="schedule-name">The ceremony</span></div>
+            <div class="schedule-item"><span class="schedule-dot" aria-hidden="true"></span><span class="schedule-time">SOON</span><span class="schedule-name">A toast together</span></div>
+            <div class="schedule-item"><span class="schedule-dot" aria-hidden="true"></span><span class="schedule-time">SOON</span><span class="schedule-name">Dinner &amp; dancing</span></div>
+          </div>
+          <p class="schedule-note">Timings will be shared as the day gets closer.</p>
+        </div>
+      </section>
+
+      <section class="gallery section-pad" aria-labelledby="gallery-title">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">LITTLE MOMENTS, BIG LOVE</p><h2 id="gallery-title">Our story in <em>pictures</em></h2>
+          <p class="section-intro">A few favorite memories, saved for the beginning of forever.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="photo-card photo-one"><div class="photo-art" aria-hidden="true"><span class="photo-sun"></span><span class="photo-stem stem-a"></span><span class="photo-stem stem-b"></span><span class="photo-caption-mark">L <i>&amp;</i> V</span></div><figcaption>Your favorite memory</figcaption></figure>
+          <figure class="photo-card photo-two"><div class="photo-art" aria-hidden="true"><span class="photo-sun"></span><span class="photo-stem stem-a"></span><span class="photo-stem stem-b"></span><span class="photo-caption-mark">L <i>&amp;</i> V</span></div><figcaption>A moment to keep</figcaption></figure>
+          <figure class="photo-card photo-three"><div class="photo-art" aria-hidden="true"><span class="photo-sun"></span><span class="photo-stem stem-a"></span><span class="photo-stem stem-b"></span><span class="photo-caption-mark">L <i>&amp;</i> V</span></div><figcaption>More memories to come</figcaption></figure>
+        </div>
+        <p class="gallery-hint">Your personal photos can take the place of these illustrated keepsakes.</p>
+      </section>
+
+      <section class="rsvp section-pad" id="rsvp" aria-labelledby="rsvp-title">
+        <div class="rsvp-flower" aria-hidden="true">✿</div>
+        <p class="eyebrow">ONE VERY IMPORTANT QUESTION</p>
+        <h2 id="rsvp-title">Will you celebrate<br><em>with us?</em></h2>
+        <p class="rsvp-copy">We promise there's cake. And at least one questionable dance move.</p>
+        <div class="rsvp-actions">
+          <button class="yes-button" id="yes-button" type="button"><span aria-hidden="true">♡</span> YES, I'LL BE THERE</button>
+          <div class="no-zone" id="no-zone"><button class="no-button" id="no-button" type="button" aria-label="No button, but it keeps escaping">NO</button></div>
+        </div>
+        <p class="escape-message" id="escape-message" aria-live="polite">Psst… there is only one right answer.</p>
+        <div class="confirmation" id="confirmation" role="status" aria-live="polite" hidden>
+          <span class="confirmation-heart" aria-hidden="true">♡</span><h3>We knew you’d say YES!</h3>
+          <p>Get ready for happy tears, cake, and your finest dance-floor moment. We can't wait to celebrate with you!</p>
+          <span class="confirmation-signoff">All our love, Lucky &amp; Vishu</span>
+        </div>
+      </section>
+
+      <section class="location section-pad" id="location" aria-labelledby="location-title">
+        <span class="location-flower" aria-hidden="true">❧</span><p class="eyebrow">WE'LL SAVE YOU A SEAT</p>
+        <h2 id="location-title">Until then,<br><em>with all our love</em></h2>
+        <p>More celebration details will find their way to you soon.</p>
+        <a class="location-map" id="location-map-link" href="#details" aria-disabled="true">THE MAP IS ON ITS WAY <span aria-hidden="true">↗</span></a>
+      </section>
+    </main>
+    <footer class="footer"><a class="wordmark footer-mark" href="#home">L <span>&amp;</span> V</a><p>Made with love, for the people we love.</p><span>LUCKY &amp; VISHU · FOREVER STARTS HERE</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

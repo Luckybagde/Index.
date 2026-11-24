@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff8f3" />
+  <title>You're Invited 💍</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #a94f64;
+      --rose-dark: #793747;
+      --pink: #f5dce0;
+      --cream: #fff8f3;
+      --gold: #b88b50;
+      --ink: #49353a;
+      --muted: #8c7478;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--cream); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100svh;
+      padding: max(18px, env(safe-area-inset-top)) 14px max(24px, env(safe-area-inset-bottom));
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(ellipse at 8% 12%, rgba(236,190,196,.42), transparent 34%),
+        radial-gradient(ellipse at 92% 88%, rgba(222,190,151,.28), transparent 34%),
+        linear-gradient(145deg, #fffaf6, #fff1f0 55%, #fff9f1);
+      overflow-x: hidden;
+    }
+    .card {
+      width: min(100%, 510px);
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      padding: clamp(25px, 6vw, 42px) clamp(18px, 5vw, 38px) 28px;
+      text-align: center;
+      border: 1px solid rgba(184,139,80,.35);
+      border-radius: 28px;
+      background: rgba(255,255,255,.83);
+      box-shadow: 0 22px 70px rgba(115,65,75,.13), inset 0 0 0 5px rgba(255,248,243,.8);
+      backdrop-filter: blur(8px);
+    }
+    .card::before, .card::after {
+      content: "✿";
+      position: absolute;
+      z-index: -1;
+      color: rgba(169,79,100,.11);
+      font-size: 112px;
+      line-height: 1;
+    }
+    .card::before { top: -24px; left: -20px; transform: rotate(-22deg); }
+    .card::after { bottom: -30px; right: -18px; transform: rotate(25deg); }
+    .eyebrow {
+      color: var(--gold);
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .ornament { color: var(--gold); font-size: 23px; margin: 10px 0 4px; }
+    h1 {
+      margin: 0;
+      color: var(--rose-dark);
+      font: 600 clamp(36px, 10vw, 53px)/1.08 "Playfair Display", Georgia, serif;
+    }
+    .names {
+      margin: 12px 0 4px;
+      font: italic 500 clamp(25px, 7vw, 34px) "Playfair Display", Georgia, serif;
+      color: var(--rose);
+    }
+    .amp { color: var(--gold); padding: 0 5px; }
+    .intro { margin: 12px auto 19px; max-width: 330px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .photo {
+      width: 100%;
+      height: 178px;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      margin: 0 auto 19px;
+      background:
+        linear-gradient(0deg, rgba(69,35,43,.23), transparent 60%),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1100&q=85") center 48%/cover,
+        #ead4d0;
+      box-shadow: 0 8px 24px rgba(95,55,63,.13);
+    }
+    .details {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 auto 22px;
+    }
+    .detail {
+      min-width: 125px;
+      padding: 10px 13px;
+      border: 1px solid #f0dfe0;
+      border-radius: 13px;
+      background: #fffaf8;
+    }
+    .detail strong { display: block; color: var(--rose-dark); font-size: 13px; }
+    .detail span { display: block; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    .question {
+      margin: 10px 0 4px;
+      color: var(--rose-dark);
+      font: 600 23px "Playfair Display", Georgia, serif;
+    }
+    .subquestion { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+    .arena {
+      position: relative;
+      height: 145px;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(250,235,235,.65), rgba(255,248,243,.45));
+      border: 1px dashed rgba(184,139,80,.36);
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+    .btn {
+      position: absolute;
+      min-width: 112px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 999px;
+      font: 800 14px "DM Sans", sans-serif;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      touch-action: manipulation;
+      box-shadow: 0 7px 18px rgba(95,55,63,.15);
+      transition: left .16s ease, top .16s ease, transform .16s ease, box-shadow .16s ease;
+    }
+    #yesBtn {
+      left: 50%;
+      top: 48px;
+      transform: translateX(-50%);
+      color: white;
+      background: linear-gradient(135deg, #b85e72, #913d55);
+      z-index: 2;
+    }
+    #yesBtn:active { transform: translateX(-50%) scale(.96); }
+    #noBtn {
+      left: calc(50% - 56px);
+      top: 94px;
+      color: #8c4858;
+      background: #fff;
+      border: 1px solid #e8c8ce;
+      z-index: 3;
+      transition: left .13s cubic-bezier(.2,.8,.2,1), top .13s cubic-bezier(.2,.8,.2,1), transform .13s;
+    }
+    .hint { min-height: 20px; margin: 9px 0 0; color: var(--rose); font-size: 11px; font-weight: 700; }
+    .footer { margin: 18px 0 0; color: #a28b8b; font-size: 10px; letter-spacing: .04em; }
+    .success {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      padding: 22px;
+      place-items: center;
+      background: rgba(65,35,45,.48);
+      backdrop-filter: blur(7px);
+    }
+    .success.show { display: grid; }
+    .success-panel {
+      width: min(100%, 390px);
+      padding: 34px 24px;
+      text-align: center;
+      border-radius: 26px;
+      border: 1px solid #e9d0b0;
+      background: #fffaf6;
+      box-shadow: 0 25px 80px rgba(40,20,25,.25);
+      animation: pop .35s ease both;
+    }
+    @keyframes pop { from { opacity: 0; transform: scale(.86) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+    .success-panel .big { font-size: 48px; }
+    .success-panel h2 { margin: 10px 0; color: var(--rose-dark); font: 600 32px "Playfair Display", Georgia, serif; }
+    .success-panel p { color: var(--muted); line-height: 1.6; font-size: 14px; }
+    .close {
+      margin-top: 12px; padding: 12px 22px; border: 0; border-radius: 999px;
+      color: white; background: var(--rose); font-weight: 700;
+    }
+    .confetti {
+      position: fixed; top: -12px; z-index: 30; width: 9px; height: 13px;
+      pointer-events: none; animation: fall linear forwards;
+    }
+    @keyframes fall { to { transform: translate3d(var(--drift), 110vh, 0) rotate(760deg); opacity: .85; } }
+    @media (max-width: 360px) {
+      .photo { height: 145px; }
+      .arena { height: 150px; }
+      .detail { min-width: 112px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow">Together with our families</div>
+    <div class="ornament">✧ ❀ ✧</div>
+    <h1>We're Getting<br>Married!</h1>
+    <div class="names"><span id="nameOne">Aarav</span><span class="amp">&</span><span id="nameTwo">Anaya</span></div>
+    <p class="intro">Two hearts, one beautiful journey. We'd be so happy to have you with us as we begin our forever.</p>
+
+    <div class="photo" role="img" aria-label="Romantic wedding celebration photograph"></div>
+
+    <div class="details">
+      <div class="detail"><strong id="dateText">Saturday, 20 December 2026</strong><span>THE WEDDING DAY</span></div>
+      <div class="detail"><strong id="timeText">6:30 PM onwards</strong><span>THE CELEBRATION</span></div>
+      <div class="detail"><strong id="venueText">The Rose Garden</strong><span>VENUE</span></div>
+    </div>
+
+    <div class="question">Will you join our celebration?</div>
+    <p class="subquestion">Choose wisely. One answer makes us very happy. 😉</p>
+
+    <section class="arena" id="arena" aria-label="Wedding RSVP choices">
+      <button class="btn" id="yesBtn" type="button">YES! ❤️</button>
+      <button class="btn" id="noBtn" type="button" aria-label="No, try to catch me">NO 🙃</button>
+    </section>
+    <p class="hint" id="hint" aria-live="polite">Psst... the YES button is right there. 👀</p>
+    <p class="footer">MADE WITH LOVE · CAN'T WAIT TO CELEBRATE WITH YOU</p>
+  </main>
+
+  <section class="success" id="success" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="success-panel">
+      <div class="big">🥳💐💍</div>
+      <h2 id="successTitle">We knew you'd say YES!</h2>
+      <p>Excellent decision. Your presence is officially requested, and your dance moves are already expected. 😂</p>
+      <p><strong>See you at the wedding!</strong></p>
+      <button class="close" id="closeSuccess" type="button">Can't wait! ❤️</button>
+    </div>
+  </section>
+
+  <script>
+    // PERSONALIZE THESE DETAILS before sharing the invitation.
+    const invitation = {
+      partnerOne: "Lucky",
+      partnerTwo: "Vishu",
+      date: "Saturday, 20 December 2026",
+      time: "6:30 PM onwards",
+      venue: "The Rose Garden"
+    };
+
+    document.getElementById("nameOne").textContent = invitation.partnerOne;
+    document.getElementById("nameTwo").textContent = invitation.partnerTwo;
+    document.getElementById("dateText").textContent = invitation.date;
+    document.getElementById("timeText").textContent = invitation.time;
+    document.getElementById("venueText").textContent = invitation.venue;
+
+    const arena = document.getElementById("arena");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const hint = document.getElementById("hint");
+    const success = document.getElementById("success");
+    let escapeCount = 0;
+    let lastPosition = { x: 0, y: 0 };
+
+    const jokes = [
+      "Nice try! 😂",
+      "NO is having commitment issues.",
+      "Wrong answer detected. 🚨",
+      "That button has places to be.",
+      "You can't catch what you can't click!",
+      "The button said: not today. 🏃",
+      "Even the button wants you at the wedding!",
+      "Plot twist: YES is the only sensible option."
+    ];
+
+    function moveNoButton() {
+      const bounds = arena.getBoundingClientRect();
+      const button = noBtn.getBoundingClientRect();
+      const maxX = Math.max(0, bounds.width - button.width);
+      const maxY = Math.max(0, bounds.height - button.height);
+      let x = 0, y = 0;
+
+      // Try several positions so it doesn't immediately jump back to the same spot.
+      for (let i = 0; i < 18; i++) {
+        x = Math.random() * maxX;
+        y = Math.random() * maxY;
+        if (Math.hypot(x - lastPosition.x, y - lastPosition.y) > 65) break;
+      }
+      lastPosition = { x, y };
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+      noBtn.style.transform = `rotate(${Math.round(Math.random() * 26 - 13)}deg)`;
+      escapeCount++;
+      hint.textContent = jokes[(escapeCount - 1) % jokes.length];
+    }
+
+    // Desktop: run away as the pointer approaches.
+    noBtn.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") moveNoButton();
+    });
+
+    // Phones/tablets: stop the tap before it can become a click, then escape.
+    noBtn.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      moveNoButton();
+    });
+
+    // Extra fallback for browsers that dispatch a click anyway.
+    noBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      moveNoButton();
+    });
+
+    // Keep the prank usable after screen rotation or resizing.
+    window.addEventListener("resize", () => {
+      noBtn.style.left = "";
+      noBtn.style.top = "";
+      noBtn.style.transform = "";
+      lastPosition = { x: 0, y: 0 };
+    });
+
+    yesBtn.addEventListener("click", () => {
+      success.classList.add("show");
+      launchConfetti();
+      document.getElementById("closeSuccess").focus();
+    });
+    document.getElementById("closeSuccess").addEventListener("click", () => {
+      success.classList.remove("show");
+      yesBtn.focus();
+    });
+    success.addEventListener("click", (event) => {
+      if (event.target === success) success.classList.remove("show");
+    });
+
+    function launchConfetti() {
+      const pieces = 90;
+      for (let i = 0; i < pieces; i++) {
+        const piece = document.createElement("i");
+        piece.className = "confetti";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = ["#b85e72", "#d7ad6d", "#e9aeb9", "#8d5265", "#f3d8a5"][i % 5];
+        piece.style.borderRadius = Math.random() > .5 ? "50%" : "2px";
+        piece.style.setProperty("--drift", `${Math.random() * 180 - 90}px`);
+        piece.style.animationDuration = `${2.4 + Math.random() * 2.2}s`;
+        piece.style.animationDelay = `${Math.random() * .65}s`;
+        document.body.appendChild(piece);
+        piece.addEventListener("animationend", () => piece.remove());
+      }
+    }
+  </script>
+</body>
+</html>

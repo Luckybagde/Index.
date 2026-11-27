@@ -29,3 +29,14 @@ The gallery currently uses original CSS illustrations instead of invented person
 - Confirmed venue link support; no date, venue address or personal photos are fabricated.
 
 Fonts load from Google Fonts when online; the page has system-font fallbacks. All site logic is vanilla JavaScript and all layout/illustrations are local CSS/HTML.
+
+## Love quiz and photo frames (added)
+
+The invitation now includes a three-question love quiz ("One Little Question, Three Little Moments of Love") and an "Our Little World" photo section. Every quiz answer is a correct answer and gives its own romantic reply; the quiz lives entirely in `script.js` and `styles.css` with no new dependencies.
+
+To add the couple's photographs, save them as:
+
+- `images/girlfriend-photo.jpg` (portrait framing works best)
+- `images/couple-photo.jpg` (landscape framing works best)
+
+Both names are already referenced in `index.html`; the frames display an elegant placeholder until the files exist, so a broken-image icon never appears. Any image size is accepted — the frames crop to fit — but keep each file under about 2 MB. If the photos are `.png` instead of `.jpg`, change those two `src` values in `index.html`.

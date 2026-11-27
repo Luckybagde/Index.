@@ -234,9 +234,133 @@ function setupMusic() {
   });
 }
 
+function setupLoveQuiz() {
+  const card = $("#quiz-card");
+  const panels = Array.from(document.querySelectorAll(".quiz-panel"));
+  const stepLabel = $("#quiz-step");
+  const bar = $("#quiz-progress-bar");
+  const finalScreen = $("#quiz-final");
+  const replayButton = $("#quiz-replay");
+  if (!card || !panels.length || !stepLabel || !finalScreen) return;
+  let current = 0;
+  const total = panels.length;
+  function showPanel(index, animate) {
+    panels.forEach((panel, panelIndex) => {
+      panel.classList.remove("is-active", "is-leaving");
+      if (panelIndex === index) {
+        panel.hidden = false;
+        panel.classList.add(animate ? "is-active" : "is-active");
+      } else {
+        panel.hidden = true;
+      }
+    });
+    stepLabel.textContent = `Question ${index + 1} of ${total}`;
+    if (bar) bar.style.width = `${((index + 1) / total) * 100}%`;
+    const stage = $("#quiz-stage");
+    if (stage) stage.hidden = false;
+    finalScreen.hidden = true;
+    card.hidden = false;
+  }
+  function showFinal() {
+    panels.forEach((panel) => {
+      panel.classList.remove("is-active", "is-leaving");
+      panel.hidden = true;
+    });
+    const stage = $("#quiz-stage");
+    if (stage) stage.hidden = true;
+    stepLabel.textContent = `All ${total} questions answered`;
+    if (bar) bar.style.width = "100%";
+    finalScreen.hidden = false;
+    celebrate();
+    if (replayButton) replayButton.focus({ preventScroll: true });
+  }
+  function answer(panel, option, allOptions) {
+    const reply = panel.querySelector(".quiz-reply");
+    const replyText = panel.querySelector(".quiz-reply-text");
+    const message = option.getAttribute("data-reply") || "Every answer is a beautiful one.";
+    allOptions.forEach((button) => {
+      button.classList.toggle("is-chosen", button === option);
+      button.classList.toggle("is-dimmed", button !== option);
+      button.setAttribute("aria-pressed", button === option ? "true" : "false");
+    });
+    if (replyText) replyText.textContent = message;
+    if (reply) {
+      reply.hidden = false;
+      reply.classList.remove("quiz-reply");
+      void reply.offsetWidth;
+      reply.classList.add("quiz-reply");
+    }
+    const next = panel.querySelector(".quiz-next");
+    if (next) next.focus({ preventScroll: true });
+  }
+  function resetPanel(panel) {
+    const reply = panel.querySelector(".quiz-reply");
+    const replyText = panel.querySelector(".quiz-reply-text");
+    if (reply) reply.hidden = true;
+    if (replyText) replyText.textContent = "";
+    panel.querySelectorAll(".quiz-option").forEach((button) => {
+      button.classList.remove("is-chosen", "is-dimmed");
+      button.removeAttribute("aria-pressed");
+    });
+  }
+  panels.forEach((panel, index) => {
+    const options = Array.from(panel.querySelectorAll(".quiz-option"));
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        if (panel.classList.contains("is-leaving")) return;
+        answer(panel, option, options);
+      });
+    });
+    const next = panel.querySelector(".quiz-next");
+    if (next) {
+      next.addEventListener("click", () => {
+        panel.classList.remove("is-active");
+        panel.classList.add("is-leaving");
+        const isLast = index === total - 1;
+        window.setTimeout(() => {
+          if (isLast) {
+            showFinal();
+          } else {
+            current = index + 1;
+            showPanel(current, true);
+          }
+        }, 300);
+      });
+    }
+  });
+  if (replayButton) {
+    replayButton.addEventListener("click", () => {
+      panels.forEach(resetPanel);
+      current = 0;
+      showPanel(0, true);
+      stepLabel.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
+  showPanel(0, false);
+}
+function setupPhotoFrames() {
+  document.querySelectorAll(".love-photo-img").forEach((image) => {
+    const frame = image.closest(".love-photo-frame");
+    if (!frame) return;
+    const markLoaded = () => {
+      if (image.naturalWidth > 0) frame.classList.add("has-photo");
+    };
+    const markMissing = () => {
+      frame.classList.remove("has-photo");
+    };
+    image.addEventListener("load", markLoaded);
+    image.addEventListener("error", markMissing);
+    if (image.complete) {
+      if (image.naturalWidth > 0) markLoaded();
+      else markMissing();
+    }
+  });
+}
 updateWeddingDetails();
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
 setupRsvp();
 setupSharing();
 setupMusic();
+setupLoveQuiz();
+setupPhotoFrames();
